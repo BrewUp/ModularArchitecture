@@ -21,7 +21,7 @@ public class PurchasesModule : IModule
 
 	public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
 	{
-		var group = endpoints.MapGroup("/api/v1/")
+		var group = endpoints.MapGroup("/v1/Purchases/")
 			.WithTags("Purchases");
 
 		group.MapGet("/", () => Results.Ok())

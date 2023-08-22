@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>4d21aac1-ce6c-460c-89a8-f46484150c55</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -33,5 +34,9 @@
 	<ItemGroup>
 	  <Folder Include="Extensions\" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="BrewUp.Tests" />
+  </ItemGroup>
 
 </Project>

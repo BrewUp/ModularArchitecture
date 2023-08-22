@@ -19,7 +19,7 @@ public static class PurchasesEndpoints
 
 		var orderId = await purchasesFacade.CreateOrderAsync(body, cancellationToken);
 
-		return Results.Created($"/api/v1/Order/{orderId}", orderId);
+		return Results.Created($"/v1/Order/{orderId}", orderId);
 	}
 
 	public static async Task<IResult> HandleSetOrderStatusToComplete(IPurchasesFacade purchasesFacade,

@@ -20,4 +20,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BrewUp.Modules.Warehouses.Domain\BrewUp.Modules.Warehouses.Domain.csproj" />
+    <ProjectReference Include="..\BrewUp.Shared\BrewUp.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

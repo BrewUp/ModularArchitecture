@@ -16,19 +16,24 @@ public class BrewUpFitnessTests
 			.Build();
 
 	private readonly IObjectProvider<IType> _warehousesModule =
-		Types().That().ResideInNamespace("BrewUp.Modules.Warehouses").As("Warehouses Module");
+		Types().That().ResideInNamespace("BrewUp.Modules.Warehouses")
+			.As("Warehouses Module");
 
 	private readonly IObjectProvider<Class> _warehousesFacade =
-		Classes().That().ImplementInterface("IWarehousesFacade").As("Warehouses Facade");
+		Classes().That().ImplementInterface("IWarehousesFacade")
+			.As("Warehouses Facade");
 
 	private readonly IObjectProvider<Class> _purchasesFacade =
-		Classes().That().ImplementInterface("IPurchasesFacade").As("Purchases Facade");
+		Classes().That().ImplementInterface("IPurchasesFacade")
+			.As("Purchases Facade");
 
 	private readonly IObjectProvider<IType> _purchasesModule =
-		Types().That().ResideInNamespace("BrewUp.Modules.Purchases").As("Purchases Module");
+		Types().That().ResideInNamespace("BrewUp.Modules.Purchases")
+			.As("Purchases Module");
 
 	private readonly IObjectProvider<Interface> _purchasesInterfaces =
-		Interfaces().That().HaveFullNameContaining("BrewUp.Modules.Purchases").As("Purchases Interfaces");
+		Interfaces().That().HaveFullNameContaining("BrewUp.Modules.Purchases")
+			.As("Purchases Interfaces");
 
 	[Fact]
 	public void TypesShouldBeInCorrectLayer()

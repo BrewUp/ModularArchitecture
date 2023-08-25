@@ -34,6 +34,9 @@ It uses [EventStoreDB](http://www.eventstore.com/) to save Domain Events and [Mo
 The .NET Core 7 SDK or later is required for some of the instructions in this document.  
 Download the latest SDK from here: [Download .NET](https://dotnet.microsoft.com/en-us/download)
 
+## Dealing with secrets
+See [Safe storage of app secrets in development in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-7.0&tabs=windows).  
+
 ### Create a self signed certificate
 ASP.NET Core uses HTTPS by default. HTTPS relies on certificates for trust, identity, and encryption.  
 Before starting, we need to generate a certificate on the local machine.  
@@ -78,14 +81,21 @@ dotnet dev-certs https --trust
 See: [Starting a container with https support using docker compose](https://learn.microsoft.com/en-us/aspnet/core/security/docker-compose-https?view=aspnetcore-5.0)
 
 #### Check the presence of the certificate
+
+Windows:  
+~~~powershell
+dir "$env:USERPROFILE\.aspnet\https"
+~~~
+
+Linux and macOS:  
 ~~~sh
-dir ~/.aspnet/https
+dir ${HOME}/.aspnet/https
 ~~~
 
 ## Build Docker image
 Before starting up all the needed containers, we need to build the image for the app: 
 ~~~sh
-docker build -t "brewup:Dockerfile" .
+docker build -t "brewup:latest" .
 ~~~
 This command will look for (and build) the image described in [Dockerfile](Dockerfile)
 
@@ -133,3 +143,10 @@ docker compose down
 Some useful FAQs. 
 ### Starting a container with https support using docker compose
 [Hosting ASP.NET Core images with Docker Compose over HTTPS](https://learn.microsoft.com/en-us/aspnet/core/security/docker-compose-https?view=aspnetcore-7.0)
+
+### Exploring a Docker image content
+Explore the filesystem of an image to be sure all is in place:  
+~~~sh
+docker run --rm -it --entrypoint=/bin/bash name-of-image
+~~~
+

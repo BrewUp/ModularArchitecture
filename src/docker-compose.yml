@@ -1,4 +1,5 @@
 version: '3.8'
+name: brewup
 
 services:
   brewup-app:
@@ -12,7 +13,7 @@ services:
       - ASPNETCORE_URLS=http://+:80;https://+:443
       - ASPNETCORE_HTTPS_PORT=5001
       - ASPNETCORE_Kestrel__Certificates__Default__Password=MySecretKey
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/BrewUp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/https/BrewUp.pfx
       - MONGODB_URL=mongodb://brewup-mongodb:27017/brewup-app
     ports:
       - target: 80
@@ -26,7 +27,12 @@ services:
     working_dir: /app
     volumes:
       - .:/src
-      - ~/.aspnet/https:/https:ro
+        # This way of mounting volumes works only on Windows
+      - ${APPDATA}\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      #- ${HOME}\.aspnet\https:/root/.aspnet/https:ro
+        # This way of mounting volumes works on Linux and macOS
+      - ${USERPROFILE}/.microsoft/usersecrets/:/root/.microsoft/usersecrets:ro
+      - ${USERPROFILE}/.aspnet/https:/root/.aspnet/https:ro
     build:
       context: .
       dockerfile: Dockerfile
@@ -83,6 +89,7 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:password@brewup-mongodb:27017/
     volumes:
       - data:/data/db
+
     networks:
       - brewup-network
 

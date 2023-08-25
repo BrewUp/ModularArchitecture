@@ -19,4 +19,9 @@ RUN dotnet publish "BrewUp.csproj" -c Release -o /app/publish /p:UseAppHost=fals
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+WORKDIR /
+RUN mkdir -p -v /root/.microsoft/usersecrets
+RUN mkdir -p -v /root/.aspnet/https
+
 ENTRYPOINT ["dotnet", "BrewUp.dll"]

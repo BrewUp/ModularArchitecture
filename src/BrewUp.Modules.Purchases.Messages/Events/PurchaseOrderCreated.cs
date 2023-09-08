@@ -5,7 +5,7 @@ using BrewUp.Shared.Dtos;
 
 namespace BrewUp.Modules.Purchases.Messages.Events;
 
-public record PurchaseOrderCreated(PurchaseOrderId PurchaseOrderId,
+public sealed record PurchaseOrderCreated(PurchaseOrderId PurchaseOrderId,
 	SupplierId SupplierId,
 	DateTime Date,
 	IEnumerable<OrderLine> Lines) : DomainEvent(PurchaseOrderId);

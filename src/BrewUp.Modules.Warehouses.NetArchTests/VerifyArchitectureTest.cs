@@ -1,4 +1,5 @@
-﻿using BrewUp.Modules.Warehouses.Domain.CommandHandlers;
+﻿using BrewUp.Modules.Purchases;
+using BrewUp.Modules.Warehouses.Domain.CommandHandlers;
 using NetArchTest.Rules;
 using Xunit;
 
@@ -9,9 +10,11 @@ public class VerifyArchitectureTest
 	[Fact]
 	public void Should_Architecture_BeCompliant()
 	{
-		var result = Types.InCurrentDomain()
+		var types = Types.InAssembly(typeof(IWarehousesFacade).Assembly)
 			.That()
-			.ResideInNamespace("BrewUp.Modules.Warehouses")
+			.ResideInNamespace("BrewUp.Modules.Warehouses");
+		
+		var result = types
 			.ShouldNot()
 			.HaveDependencyOn("BrewUp.Modules.Purchases")
 			.GetResult()
@@ -35,7 +38,7 @@ public class VerifyArchitectureTest
 	}
 
 	[Fact]
-	public void ShouldNot_CommandHandler_BeSealed()
+	public void CommandHandler_ShouldBeSealed()
 	{
 		var types = Types.InAssembly(typeof(CreateBeerCommandHandler).Assembly)
 			.That()

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace BrewUp.Modules.Purchases.Domain.CommandHandlers;
 
-public class ChangePurchaseOrderStatusToCompleteCommandHandler : CommandHandlerBase<ChangePurchaseOrderStatusToComplete>
+public sealed class ChangePurchaseOrderStatusToCompleteCommandHandler : CommandHandlerBase<ChangePurchaseOrderStatusToComplete>
 {
 	private readonly IPublisher _serviceBus;
 

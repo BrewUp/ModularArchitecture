@@ -1,4 +1,6 @@
-﻿namespace BrewUp.Modules;
+﻿using Microsoft.FeatureManagement;
+
+namespace BrewUp.Modules;
 
 public static class ModuleExtensions
 {
@@ -6,6 +8,8 @@ public static class ModuleExtensions
 
 	public static WebApplicationBuilder RegisterModules(this WebApplicationBuilder builder)
 	{
+		builder.Services.AddFeatureManagement(builder.Configuration.GetSection("BrewUp:FeatureManagement"));
+
 		var modules = DiscoverModules();
 		modules = modules.Where(m => m.IsEnabled)
 			.OrderBy(m => m.Order);

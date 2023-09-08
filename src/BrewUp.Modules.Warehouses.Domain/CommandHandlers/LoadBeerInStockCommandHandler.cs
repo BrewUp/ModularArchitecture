@@ -5,7 +5,7 @@ using MediatR;
 
 namespace BrewUp.Modules.Warehouses.Domain.CommandHandlers;
 
-public class LoadBeerInStockCommandHandler : CommandHandlerBase<LoadBeerInStock>
+public sealed class LoadBeerInStockCommandHandler : CommandHandlerBase<LoadBeerInStock>
 {
 	private readonly IPublisher _serviceBus;
 

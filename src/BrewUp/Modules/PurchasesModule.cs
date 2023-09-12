@@ -29,10 +29,7 @@ public class PurchasesModule : IModule
 			.Produces(StatusCodes.Status200OK)
 			.WithName("GetOrders");
 
-		group.MapPost("/Order", (IFeatureManager) =>
-			{
-
-			})
+		group.MapPost("/Order", PurchasesEndpoints.HandleCreateOrder)
 			.Produces(StatusCodes.Status400BadRequest)
 			.Produces(StatusCodes.Status201Created)
 			.WithName("CreateOrder");

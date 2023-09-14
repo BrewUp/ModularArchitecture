@@ -1,4 +1,5 @@
 ﻿using BrewUp.Modules.Purchases;
+using BrewUp.Modules.Warehouses.Domain;
 using BrewUp.Modules.Warehouses.Domain.CommandHandlers;
 using NetArchTest.Rules;
 using Xunit;
@@ -26,9 +27,11 @@ public class VerifyArchitectureTest
 	[Fact]
 	public void ShouldNot_Domain_HavingReferenceToReadModel()
 	{
-		var result = Types.InCurrentDomain()
+		var types = Types.InAssembly(typeof(WarehousesDomainHelper).Assembly)
 			.That()
-			.ResideInNamespace("BrewUp.Modules.Warehouses.Domain")
+			.ResideInNamespace("BrewUp.Modules.Warehouses.Domain");
+		
+		var result = types
 			.ShouldNot()
 			.HaveDependencyOn("BrewUp.Modules.Warehouses.ReadModel")
 			.GetResult()

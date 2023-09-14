@@ -29,4 +29,12 @@ public static class PurchasesEndpoints
 		await purchasesFacade.ChangeStatusToComplete(id, cancellationToken);
 		return Results.Ok();
 	}
+
+	public static async Task<IResult> HandleGetPurchasesOrders(
+		IPurchasesFacade purchasesFacade,
+		CancellationToken cancellationToken)
+	{
+		var orders = await purchasesFacade.GetPurchasesOrdersAsync(cancellationToken);
+		return Results.Ok(orders);
+	}
 }

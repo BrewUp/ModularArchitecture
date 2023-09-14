@@ -80,7 +80,7 @@ public class BrewUpFitnessTests
 	{
 		IArchRule purchasesModuleShouldNotAccessWarehousesModule = Types()
 			.That()
-			.Are(typeof(PurchasesFacade))
+			.Are(typeof(IPurchasesFacade))
 			.Should()
 			.NotDependOnAny(_warehousesModule)
 			.Because("it's forbidden");

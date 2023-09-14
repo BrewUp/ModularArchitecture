@@ -1,4 +1,6 @@
-﻿using BrewUp.Modules.Purchases.Validators;
+﻿using BrewUp.Modules.Purchases.Domain;
+using BrewUp.Modules.Purchases.ReadModel;
+using BrewUp.Modules.Purchases.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,9 @@ public static class PurchasesHelper
 		services.AddSingleton<ValidationHandler>();
 		services.AddScoped<IPurchasesFacade, PurchasesFacade>();
 		services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(PurchasesFacade).Assembly));
+		
+		services.AddPurchasesDomain();
+		services.AddPurchasesReadModel();
 
 		return services;
 	}

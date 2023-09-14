@@ -3,48 +3,48 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace BrewUp.Modules
+namespace BrewUp.Modules;
+
+public sealed class SwaggerModule : IModule
 {
-	public sealed class SwaggerModule : IModule
+	public bool IsEnabled { get; }
+	public int Order { get; }
+
+	public SwaggerModule()
 	{
-		public bool IsEnabled { get; }
-		public int Order { get; }
+		IsEnabled = true;
+		Order = 0;
+	}
 
-		public SwaggerModule()
+	public IServiceCollection RegisterModule(WebApplicationBuilder builder)
+	{
+		builder.Services.AddEndpointsApiExplorer();
+		builder.Services.AddSwaggerGen(setup =>
 		{
-			IsEnabled = true;
-			Order = 0;
-		}
-
-		public IServiceCollection RegisterModule(WebApplicationBuilder builder)
-		{
-			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen(setup =>
+			setup.SchemaFilter<OrderSchemaFilter>();
+			setup.SwaggerDoc("v1", new OpenApiInfo()
 			{
-				setup.SchemaFilter<OrderSchemaFilter>();
-				setup.SwaggerDoc("v1", new OpenApiInfo()
+				Description = "BrewUp API - REST Service",
+				Title = "BrewUp API",
+				Version = "v1",
+				Contact = new OpenApiContact
 				{
-					Description = "BrewUp API - REST Service",
-					Title = "BrewUp API",
-					Version = "v1",
-					Contact = new OpenApiContact
-					{
-						Name = "BrewUp.API"
-					}
-				});
+					Name = "BrewUp.API"
+				}
 			});
+		});
 
-			return builder.Services;
-		}
+		return builder.Services;
+	}
 
-		public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
-		{
-			return endpoints;
-		}
+	public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
+	{
+		return endpoints;
 	}
 }
 
-public class OrderSchemaFilter : ISchemaFilter
+
+internal class OrderSchemaFilter : ISchemaFilter
 {
 	public void Apply(OpenApiSchema schema, SchemaFilterContext context)
 	{

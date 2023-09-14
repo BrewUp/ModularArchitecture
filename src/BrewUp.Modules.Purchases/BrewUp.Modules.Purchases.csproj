@@ -16,7 +16,9 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\BrewUp.Modules.Purchases.Domain\BrewUp.Modules.Purchases.Domain.csproj" />
     <ProjectReference Include="..\BrewUp.Modules.Purchases.Messages\BrewUp.Modules.Purchases.Messages.csproj" />
+    <ProjectReference Include="..\BrewUp.Modules.Purchases.ReadModel\BrewUp.Modules.Purchases.ReadModel.csproj" />
     <ProjectReference Include="..\BrewUp.Modules.Purchases.SharedKernel\BrewUp.Modules.Purchases.SharedKernel.csproj" />
     <ProjectReference Include="..\BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj" />
   </ItemGroup>

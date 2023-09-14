@@ -24,16 +24,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BrewUp.Modules.Purchases.Domain\BrewUp.Modules.Purchases.Domain.csproj" />
-	  <ProjectReference Include="..\BrewUp.Modules.Purchases.ReadModel\BrewUp.Modules.Purchases.ReadModel.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Purchases\BrewUp.Modules.Purchases.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Sagas\BrewUp.Modules.Sagas.csproj" />
-	  <ProjectReference Include="..\BrewUp.Modules.Warehouses.Domain\BrewUp.Modules.Warehouses.Domain.csproj" />
-	  <ProjectReference Include="..\BrewUp.Modules.Warehouses.ReadModel\BrewUp.Modules.Warehouses.ReadModel.csproj" />
+	  <ProjectReference Include="..\BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj" />
 	</ItemGroup>
 
   <ItemGroup>
     <InternalsVisibleTo Include="BrewUp.Tests" />
+    <InternalsVisibleTo Include="BrewUp.ContractTest" />
+	  <InternalsVisibleTo Include="BrewUp.Modules.Purchases.NetArchTests" />
   </ItemGroup>
 
 </Project>

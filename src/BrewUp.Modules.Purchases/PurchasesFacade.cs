@@ -6,7 +6,7 @@ using MediatR;
 
 namespace BrewUp.Modules.Purchases;
 
-public sealed class PurchasesFacade : IPurchasesFacade
+internal sealed class PurchasesFacade : IPurchasesFacade
 {
 	private readonly IMediator _serviceBus;
 
@@ -32,5 +32,34 @@ public sealed class PurchasesFacade : IPurchasesFacade
 		var command = new ChangePurchaseOrderStatusToComplete(new PurchaseOrderId(id));
 
 		await _serviceBus.Send(command, cancellationToken);
+	}
+
+	public Task<IEnumerable<Order>> GetPurchasesOrdersAsync(CancellationToken cancellationToken)
+	{
+		var orders = new List<Order>
+		{
+			new()
+			{
+				SupplierId = Guid.NewGuid(),
+				Date = DateTime.UtcNow,
+				Lines = new List<OrderLine>
+				{
+					new()
+					{
+						ProductId = Guid.NewGuid(),
+						Quantity = new Quantity(10, "Nr"),
+						Price = new Price(10, "EUR")
+					},
+					new()
+					{
+						ProductId = Guid.NewGuid(),
+						Quantity = new Quantity(5, "Nr"),
+						Price = new Price(8, "EUR")
+					}
+				}
+			}
+		};
+
+		return Task.FromResult<IEnumerable<Order>>(orders);
 	}
 }

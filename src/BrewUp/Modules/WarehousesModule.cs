@@ -1,5 +1,4 @@
-﻿using BrewUp.Modules.Warehouses.Domain;
-using BrewUp.Modules.Warehouses.ReadModel;
+﻿using BrewUp.Modules.Warehouses;
 
 namespace BrewUp.Modules;
 
@@ -10,8 +9,7 @@ public class WarehousesModule : IModule
 
 	public IServiceCollection RegisterModule(WebApplicationBuilder builder)
 	{
-		builder.Services.AddWarehousesDomain();
-		builder.Services.AddWarehousesReadModel();
+		builder.Services.AddWarehousesModule();
 
 		return builder.Services;
 	}

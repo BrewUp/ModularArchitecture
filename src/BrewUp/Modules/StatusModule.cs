@@ -1,27 +1,26 @@
 using BrewUp.Extensions;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
-namespace BrewUp.Modules
+namespace BrewUp.Modules;
+
+public sealed class StatusModule : IModule
 {
-	public sealed class StatusModule : IModule
+	public bool IsEnabled => true;
+	public int Order => 0;
+
+	public IServiceCollection RegisterModule(WebApplicationBuilder builder)
 	{
-		public bool IsEnabled => true;
-		public int Order => 0;
+		builder.Services.AddHealthChecks();
+		return builder.Services;
+	}
 
-		public IServiceCollection RegisterModule(WebApplicationBuilder builder)
+	public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
+	{
+		endpoints.MapHealthChecks("/health/api", new HealthCheckOptions()
 		{
-			builder.Services.AddHealthChecks();
-			return builder.Services;
-		}
+			ResponseWriter = HealthCheckHelper.WriteResponse
+		});
 
-		public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
-		{
-			endpoints.MapHealthChecks("/health/api", new HealthCheckOptions()
-			{
-				ResponseWriter = HealthCheckHelper.WriteResponse
-			});
-
-			return endpoints;
-		}
+		return endpoints;
 	}
 }

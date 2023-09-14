@@ -1,32 +1,25 @@
-﻿namespace BrewUp.Modules
+﻿namespace BrewUp.Modules;
+
+public sealed class CorsModule : IModule
 {
-	public sealed class CorsModule : IModule
+	public bool IsEnabled => true;
+	public int Order => 0;
+
+	public IServiceCollection RegisterModule(WebApplicationBuilder builder)
 	{
-		public bool IsEnabled { get; }
-		public int Order { get; }
-
-		public CorsModule()
+		builder.Services.AddCors(options =>
 		{
-			IsEnabled = true;
-			Order = 0;
-		}
+			options.AddPolicy("CorsPolicy", corsBuilder =>
+				corsBuilder.AllowAnyMethod()
+					.AllowAnyOrigin()
+					.AllowAnyHeader());
+		});
 
-		public IServiceCollection RegisterModule(WebApplicationBuilder builder)
-		{
-			builder.Services.AddCors(options =>
-			{
-				options.AddPolicy("CorsPolicy", corsBuilder =>
-					corsBuilder.AllowAnyMethod()
-						.AllowAnyOrigin()
-						.AllowAnyHeader());
-			});
+		return builder.Services;
+	}
 
-			return builder.Services;
-		}
-
-		public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
-		{
-			return endpoints;
-		}
+	public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
+	{
+		return endpoints;
 	}
 }

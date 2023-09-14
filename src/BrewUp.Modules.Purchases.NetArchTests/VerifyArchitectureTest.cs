@@ -10,17 +10,19 @@ public class VerifyArchitectureTest
 	{
 		var types = Types.InAssembly(typeof(Program).Assembly);
 
-		var assembliesList = new List<string>
+		var forbiddenAssemblies = new List<string>
 		{
 			"BrewUp.Modules.Purchases.Domain",
 			"BrewUp.Modules.Purchases.Messages",
 			"BrewUp.Modules.Purchases.ReadModel",
-			"BrewUp.Modules.Purchases.SharedKernel"
+			"BrewUp.Modules.Purchases.SharedKernel",
+			"BrewUp.Modules.Warehouses.Domain",
+			"BrewUp.Modules.Warehouses.ReadModel"
 		};
 
 		var result = types
 			.ShouldNot()
-			.HaveDependencyOnAny(assembliesList.ToArray())
+			.HaveDependencyOnAny(forbiddenAssemblies.ToArray())
 			.GetResult()
 			.IsSuccessful;
 
@@ -40,20 +42,22 @@ public class VerifyArchitectureTest
 			.And()
 			.ResideInNamespaceStartingWith("BrewUp.Modules");
 
-		var dependenciesAssemblies = new List<string>
+		var authorizedAssemblies = new List<string>
 		{
 			"BrewUp.Modules.Purchases",
+			"BrewUp.Modules.Purchases.Provider",
 			"BrewUp.Modules.Warehouses",
+			"BrewUp.Modules.Warehouses.Provider",
 			"BrewUp.Modules.Sagas"
 		}.ToArray();
 
 		var result = types
 			.Should()
-			.NotHaveDependencyOnAny(dependenciesAssemblies)
+			.HaveDependencyOnAny(authorizedAssemblies)
 			.GetResult()
-			.FailingTypeNames;
+			.IsSuccessful;
 
-		Assert.True(result.Count.Equals(dependenciesAssemblies.ToArray().Length));
+		Assert.True(result);
 	}
 
 	[Fact]
@@ -69,6 +73,46 @@ public class VerifyArchitectureTest
 			.HaveDependencyOn("BrewUp.Modules.Purchases")
 			.And()
 			.HaveDependencyOn("BrewUp.Modules.Purchases.ReadModel")
+			.GetResult()
+			.IsSuccessful;
+
+		Assert.True(result);
+	}
+	
+	[Fact]
+	// Classes in the module Purchases should not directly reference Sagas
+	public void Purchases_ShouldNot_HavingReferenceTo_Sagas()
+	{
+		var types = Types.InAssembly(typeof(PurchasesDomainHelper).Assembly)
+			.That()
+			.ResideInNamespaceEndingWith("BrewUp.Modules.Purchases");
+
+		var result = types
+			.ShouldNot()
+			.HaveDependencyOn("BrewUp.Modules.Sagas")
+			.GetResult()
+			.IsSuccessful;
+
+		Assert.True(result);
+	}
+	
+	[Fact]
+	// Classes in the module Purchases should not directly reference Warehouses
+	public void Purchases_ShouldNot_HavingReferenceTo_Warehouses()
+	{
+		var types = Types.InAssembly(typeof(PurchasesDomainHelper).Assembly)
+			.That()
+			.ResideInNamespaceEndingWith("BrewUp.Modules.Purchases");
+
+		var result = types
+			.ShouldNot()
+			.HaveDependencyOn("BrewUp.Modules.Warehouses")
+			.And()
+			.HaveDependencyOn("BrewUp.Modules.Warehouses.Domain")
+			.And()
+			.HaveDependencyOn("BrewUp.Modules.Warehouses.Provider")
+			.And()
+			.HaveDependencyOn("BrewUp.Modules.Warehouses.ReadModel")
 			.GetResult()
 			.IsSuccessful;
 

@@ -6,7 +6,7 @@ using MediatR;
 
 namespace BrewUp.Modules.Purchases;
 
-internal sealed class PurchasesFacade : IPurchasesFacade
+public sealed class PurchasesFacade : IPurchasesFacade
 {
 	private readonly IMediator _serviceBus;
 

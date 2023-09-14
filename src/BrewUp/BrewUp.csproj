@@ -24,6 +24,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\BrewUp.Modules.Purchases.Provider\BrewUp.Modules.Purchases.Provider.csproj" />
+	  <ProjectReference Include="..\..\BrewUp.Modules.Warehouses.Provider\BrewUp.Modules.Warehouses.Provider.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Purchases\BrewUp.Modules.Purchases.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Sagas\BrewUp.Modules.Sagas.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj" />

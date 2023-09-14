@@ -42,6 +42,8 @@ public class VerifyArchitectureTest
 
 		var dependenciesAssemblies = new List<string>
 		{
+			"BrewUp.Modules.Purchases",
+			"BrewUp.Modules.Warehouses",
 			"BrewUp.Modules.Sagas"
 		}.ToArray();
 
@@ -56,7 +58,7 @@ public class VerifyArchitectureTest
 
 	[Fact]
 	// Classes in the Domain should not directly reference ReadModel
-	public void Domain_ShouldNot_HavingReferenceTo_ReadModel()
+	public void Domain_ShouldNot_HavingReferenceTo_Facade_And_ReadModel()
 	{
 		var types = Types.InAssembly(typeof(PurchasesDomainHelper).Assembly)
 			.That()
@@ -64,6 +66,8 @@ public class VerifyArchitectureTest
 
 		var result = types
 			.ShouldNot()
+			.HaveDependencyOn("BrewUp.Modules.Purchases")
+			.And()
 			.HaveDependencyOn("BrewUp.Modules.Purchases.ReadModel")
 			.GetResult()
 			.IsSuccessful;

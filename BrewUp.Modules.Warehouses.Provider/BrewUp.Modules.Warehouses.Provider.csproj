@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\BrewUp.Modules.Warehouses.Domain\BrewUp.Modules.Warehouses.Domain.csproj" />
+    <ProjectReference Include="..\src\BrewUp.Modules.Warehouses.ReadModel\BrewUp.Modules.Warehouses.ReadModel.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿using BrewUp.Modules.Warehouses;
+﻿using BrewUp.Modules.Warehouses.Provider;
 
 namespace BrewUp.Modules;
 

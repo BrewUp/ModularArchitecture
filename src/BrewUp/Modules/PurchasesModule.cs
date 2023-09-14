@@ -1,5 +1,5 @@
-﻿using BrewUp.Modules.Purchases;
-using BrewUp.Modules.Purchases.Endpoints;
+﻿using BrewUp.Modules.Purchases.Endpoints;
+using BrewUp.Modules.Purchases.Provider;
 
 namespace BrewUp.Modules;
 

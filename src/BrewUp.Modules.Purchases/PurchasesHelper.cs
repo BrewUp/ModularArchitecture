@@ -5,7 +5,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BrewUp.Modules.Purchases.Provider;
+namespace BrewUp.Modules.Purchases;
 
 public static class PurchasesHelper
 {

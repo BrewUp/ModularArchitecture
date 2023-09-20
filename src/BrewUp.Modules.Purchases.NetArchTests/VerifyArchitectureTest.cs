@@ -1,4 +1,7 @@
 ﻿using BrewUp.Modules.Purchases.Domain;
+using BrewUp.Modules.Purchases.Messages.Events;
+using BrewUp.Modules.Purchases.ReadModel;
+using BrewUp.Modules.Purchases.SharedKernel;
 using NetArchTest.Rules;
 
 namespace BrewUp.Modules.Purchases.NetArchTests;
@@ -45,9 +48,7 @@ public class VerifyArchitectureTest
 		var authorizedAssemblies = new List<string>
 		{
 			"BrewUp.Modules.Purchases",
-			"BrewUp.Modules.Purchases.Provider",
 			"BrewUp.Modules.Warehouses",
-			"BrewUp.Modules.Warehouses.Provider",
 			"BrewUp.Modules.Sagas"
 		}.ToArray();
 
@@ -78,7 +79,7 @@ public class VerifyArchitectureTest
 
 		Assert.True(result);
 	}
-	
+
 	[Fact]
 	// Classes in the module Purchases should not directly reference Sagas
 	public void Purchases_ShouldNot_HavingReferenceTo_Sagas()
@@ -95,12 +96,12 @@ public class VerifyArchitectureTest
 
 		Assert.True(result);
 	}
-	
+
 	[Fact]
 	// Classes in the module Purchases should not directly reference Warehouses
 	public void Purchases_ShouldNot_HavingReferenceTo_Warehouses()
 	{
-		var types = Types.InAssembly(typeof(PurchasesDomainHelper).Assembly)
+		var types = Types.InAssembly(typeof(PurchasesHelper).Assembly)
 			.That()
 			.ResideInNamespaceEndingWith("BrewUp.Modules.Purchases");
 
@@ -110,12 +111,65 @@ public class VerifyArchitectureTest
 			.And()
 			.HaveDependencyOn("BrewUp.Modules.Warehouses.Domain")
 			.And()
-			.HaveDependencyOn("BrewUp.Modules.Warehouses.Provider")
-			.And()
 			.HaveDependencyOn("BrewUp.Modules.Warehouses.ReadModel")
 			.GetResult()
 			.IsSuccessful;
 
 		Assert.True(result);
+	}
+
+	[Fact]
+	// Classes in the module Purchases should not directly reference Warehouses
+	public void PurchasesProjects_Should_Having_Namespace_StartingWith_BrewUp_Modules_Purchases()
+	{
+		var facadeTypes = Types.InAssembly(typeof(PurchasesFacade).Assembly);
+		var domainTypes = Types.InAssembly(typeof(PurchasesDomainHelper).Assembly);
+		var messagesTypes = Types.InAssembly(typeof(PurchaseOrderCreated).Assembly);
+		var readModelTypes = Types.InAssembly(typeof(PurchasesReadModelHelper).Assembly);
+		var sharedKernelTypes = Types.InAssembly(typeof(Enumeration).Assembly);
+
+		var purchasesTypes = facadeTypes.GetTypes()
+			.Concat(domainTypes.GetTypes())
+			.Concat(messagesTypes.GetTypes())
+			.Concat(readModelTypes.GetTypes())
+			.Concat(sharedKernelTypes.GetTypes());
+		
+		foreach (var purchasesType in purchasesTypes)
+		{
+			var result = purchasesType.Namespace?.StartsWith("BrewUp.Modules.Purchases");
+			Assert.True(result);
+		}
+
+		//var facadeResult = facadeTypes
+		//	.Should()
+		//	.ResideInNamespaceStartingWith("BrewUp.Modules.Purchases")
+		//	.GetResult()
+		//	.IsSuccessful;
+
+		//var domainResult = domainTypes
+		//	.Should()
+		//	.ResideInNamespaceStartingWith("BrewUp.Modules.Purchases")
+		//	.GetResult()
+		//	.IsSuccessful;
+
+		//var messagesResult = messagesTypes
+		//	.Should()
+		//	.ResideInNamespaceStartingWith("BrewUp.Modules.Purchases")
+		//	.GetResult()
+		//	.IsSuccessful;
+
+		//var readModelResult = readModelTypes
+		//	.Should()
+		//	.ResideInNamespaceStartingWith("BrewUp.Modules.Purchases")
+		//	.GetResult()
+		//	.IsSuccessful;
+
+		//var sharedKernelResult = sharedKernelTypes
+		//	.Should()
+		//	.ResideInNamespaceStartingWith("BrewUp.Modules.Purchases")
+		//	.GetResult()
+		//	.IsSuccessful;
+
+		//Assert.True(facadeResult && domainResult && messagesResult && readModelResult && sharedKernelResult);
 	}
 }

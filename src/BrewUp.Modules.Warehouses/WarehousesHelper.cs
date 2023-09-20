@@ -2,7 +2,7 @@
 using BrewUp.Modules.Warehouses.ReadModel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BrewUp.Modules.Warehouses.Provider;
+namespace BrewUp.Modules.Warehouses;
 
 public static class WarehousesHelper
 {

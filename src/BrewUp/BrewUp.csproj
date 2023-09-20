@@ -27,6 +27,8 @@
 	  <ProjectReference Include="..\BrewUp.Modules.Purchases\BrewUp.Modules.Purchases.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Sagas\BrewUp.Modules.Sagas.csproj" />
 	  <ProjectReference Include="..\BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj" />
+	  <ProjectReference Include="..\BrewUp.Purchases\BrewUp.Modules.Purchases\BrewUp.Modules.Purchases.csproj" />
+	  <ProjectReference Include="..\BrewUp.Warehouses\BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj" />
 	</ItemGroup>
 
   <ItemGroup>

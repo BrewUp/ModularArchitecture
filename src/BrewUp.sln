@@ -13,25 +13,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Purchases", "Purchases", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouses", "Warehouses", "{4FF3E751-F860-4584-A608-0B8FFDF40853}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases", "BrewUp.Modules.Purchases\BrewUp.Modules.Purchases.csproj", "{EBA2816A-C8A1-486B-A544-69A51EA4BE57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases", "BrewUp.Purchases\BrewUp.Modules.Purchases\BrewUp.Modules.Purchases.csproj", "{EBA2816A-C8A1-486B-A544-69A51EA4BE57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses", "BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj", "{C342E463-2989-4AE9-8F68-E041FB256EF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses", "BrewUp.Warehouses\BrewUp.Modules.Warehouses\BrewUp.Modules.Warehouses.csproj", "{C342E463-2989-4AE9-8F68-E041FB256EF6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.Messages", "BrewUp.Modules.Purchases.Messages\BrewUp.Modules.Purchases.Messages.csproj", "{94D2B8C0-17C4-4074-95F4-A90D0B716F5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.Messages", "BrewUp.Purchases\BrewUp.Modules.Purchases.Messages\BrewUp.Modules.Purchases.Messages.csproj", "{94D2B8C0-17C4-4074-95F4-A90D0B716F5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 Shared", "30 Shared", "{E8B3861E-EB5A-4482-B1F8-A526F096B690}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Shared", "BrewUp.Shared\BrewUp.Shared.csproj", "{919F2264-18AC-41AA-A6E4-D0B1D98F3BDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.SharedKernel", "BrewUp.Modules.Purchases.SharedKernel\BrewUp.Modules.Purchases.SharedKernel.csproj", "{C07B89DD-28C1-4894-B728-3449215D2AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.SharedKernel", "BrewUp.Purchases\BrewUp.Modules.Purchases.SharedKernel\BrewUp.Modules.Purchases.SharedKernel.csproj", "{C07B89DD-28C1-4894-B728-3449215D2AD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.ReadModel", "BrewUp.Modules.Purchases.ReadModel\BrewUp.Modules.Purchases.ReadModel.csproj", "{AFC10FB5-D453-4E2D-8264-EAC643D2408A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.ReadModel", "BrewUp.Purchases\BrewUp.Modules.Purchases.ReadModel\BrewUp.Modules.Purchases.ReadModel.csproj", "{AFC10FB5-D453-4E2D-8264-EAC643D2408A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.Domain", "BrewUp.Modules.Purchases.Domain\BrewUp.Modules.Purchases.Domain.csproj", "{9A4441C0-AA26-486B-9369-620DB8D12C3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.Domain", "BrewUp.Purchases\BrewUp.Modules.Purchases.Domain\BrewUp.Modules.Purchases.Domain.csproj", "{9A4441C0-AA26-486B-9369-620DB8D12C3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.Domain", "BrewUp.Modules.Warehouses.Domain\BrewUp.Modules.Warehouses.Domain.csproj", "{5F27E9C5-68F2-4D64-AEB3-779BF7A097D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.Domain", "BrewUp.Warehouses\BrewUp.Modules.Warehouses.Domain\BrewUp.Modules.Warehouses.Domain.csproj", "{5F27E9C5-68F2-4D64-AEB3-779BF7A097D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.ReadModel", "BrewUp.Modules.Warehouses.ReadModel\BrewUp.Modules.Warehouses.ReadModel.csproj", "{6FEF87BD-4736-44C3-847B-500DACC1525A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.ReadModel", "BrewUp.Warehouses\BrewUp.Modules.Warehouses.ReadModel\BrewUp.Modules.Warehouses.ReadModel.csproj", "{6FEF87BD-4736-44C3-847B-500DACC1525A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5679DA18-65A7-4292-8633-71C79BAA53A5}"
 EndProject
@@ -41,11 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Sagas", "Bre
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9BDDD242-BE44-4B3B-8A0E-71FC908F2854}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.FitnessTests", "BrewUp.Modules.Warehouses.FitnessTests\BrewUp.Modules.Warehouses.FitnessTests.csproj", "{9CBD35D7-82FC-4727-94CD-C9B3AADDEC46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.NetArchTests", "BrewUp.Warehouses\BrewUp.Modules.Warehouses.NetArchTests\BrewUp.Modules.Warehouses.NetArchTests.csproj", "{1B539711-2D07-45A0-A987-0FF3037E901D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Warehouses.NetArchTests", "BrewUp.Modules.Warehouses.NetArchTests\BrewUp.Modules.Warehouses.NetArchTests.csproj", "{1B539711-2D07-45A0-A987-0FF3037E901D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.NetArchTests", "BrewUp.Modules.Purchases.NetArchTests\BrewUp.Modules.Purchases.NetArchTests.csproj", "{29DE16A5-D298-49B5-AAA6-7E0B0C566F3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Modules.Purchases.NetArchTests", "BrewUp.Purchases\BrewUp.Modules.Purchases.NetArchTests\BrewUp.Modules.Purchases.NetArchTests.csproj", "{29DE16A5-D298-49B5-AAA6-7E0B0C566F3E}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9FA77CF5-B499-4E2A-BD6C-7CE9C57314B4}"
 EndProject
@@ -103,10 +101,6 @@ Global
 		{AAA5EB89-0AD8-4428-B608-0B703D92CAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA5EB89-0AD8-4428-B608-0B703D92CAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA5EB89-0AD8-4428-B608-0B703D92CAFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CBD35D7-82FC-4727-94CD-C9B3AADDEC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CBD35D7-82FC-4727-94CD-C9B3AADDEC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CBD35D7-82FC-4727-94CD-C9B3AADDEC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CBD35D7-82FC-4727-94CD-C9B3AADDEC46}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B539711-2D07-45A0-A987-0FF3037E901D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B539711-2D07-45A0-A987-0FF3037E901D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B539711-2D07-45A0-A987-0FF3037E901D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -144,7 +138,6 @@ Global
 		{3987B37F-EB5F-417D-9E34-53CD4AA37F66} = {D755C7A9-B931-4327-8F51-69300620B3B5}
 		{AAA5EB89-0AD8-4428-B608-0B703D92CAFF} = {3987B37F-EB5F-417D-9E34-53CD4AA37F66}
 		{9BDDD242-BE44-4B3B-8A0E-71FC908F2854} = {4FF3E751-F860-4584-A608-0B8FFDF40853}
-		{9CBD35D7-82FC-4727-94CD-C9B3AADDEC46} = {9BDDD242-BE44-4B3B-8A0E-71FC908F2854}
 		{1B539711-2D07-45A0-A987-0FF3037E901D} = {9BDDD242-BE44-4B3B-8A0E-71FC908F2854}
 		{29DE16A5-D298-49B5-AAA6-7E0B0C566F3E} = {5679DA18-65A7-4292-8633-71C79BAA53A5}
 		{5302FF2B-9B32-4B44-A49E-EA79F6B2C848} = {714EC6A5-5562-4F01-A8FA-02D088CC73CD}

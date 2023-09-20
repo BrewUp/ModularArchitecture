@@ -1,11 +1,11 @@
-﻿using BrewUp.Modules.Purchases.BindingModels;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using BrewUp.Modules.Purchases.BindingModels;
 using Xunit;
 
 namespace BrewUp.Tests;

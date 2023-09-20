@@ -130,9 +130,9 @@ public class VerifyArchitectureTest
 		var netVersion = Environment.Version;
 
 		var purchasesAssemblies = (from folder in subFolders
-			let binFolder = Path.Combine(folder, $"bin\\Debug\\net{netVersion.Major}.{netVersion.Minor}")
+			let binFolder = Path.Join(folder, "bin", "Debug", $"net{netVersion.Major}.{netVersion.Minor}")
 			let files = Directory.GetFiles(binFolder)
-			let folderArray = folder.Split('\\')
+			let folderArray = folder.Split(Path.DirectorySeparatorChar)
 			select files.FirstOrDefault(f => f.EndsWith($"{folderArray[folderArray!.Length - 1]}.dll"))
 			into assemblyFilename
 			where !assemblyFilename!.Contains("Test")

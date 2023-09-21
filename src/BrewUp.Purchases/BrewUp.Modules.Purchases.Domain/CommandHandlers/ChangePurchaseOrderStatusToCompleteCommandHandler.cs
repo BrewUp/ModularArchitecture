@@ -1,8 +1,6 @@
-﻿using BrewUp.Modules.Purchases.Messages.Commands;
-using BrewUp.Modules.Purchases.Messages.Events;
+﻿using BrewUp.Modules.Purchases.Domain.Entities;
+using BrewUp.Modules.Purchases.Messages.Commands;
 using BrewUp.Shared.Abstracts;
-using BrewUp.Shared.DomainIds;
-using BrewUp.Shared.Dtos;
 using MediatR;
 
 namespace BrewUp.Modules.Purchases.Domain.CommandHandlers;
@@ -18,27 +16,8 @@ public sealed class ChangePurchaseOrderStatusToCompleteCommandHandler : CommandH
 
 	public override async Task Handle(ChangePurchaseOrderStatusToComplete command, CancellationToken cancellationToken)
 	{
-		// Do something
-		var lines = Enumerable.Empty<OrderLine>();
-		lines = lines.Concat(new List<OrderLine>
-		{
-			new ()
-			{
-				BeerId = new BeerId(Guid.NewGuid()),
-				BeerName = new BeerName("Muflone IPA"),
-				Quantity = new Quantity()
-				{
-					Value = 10,
-					UnitOfMeasure = "NR"
-				},
-				Price = new Price()
-				{
-					Value = 2.5m,
-					Currency = "EUR"
-				},
-			},
-		});
-		var purchaseOrderStatusCompleted = new PurchaseOrderStatusChangedToComplete(command.PurchaseOrderId, lines);
+		// Aggregate Factory
+		var purchaseOrderStatusCompleted = PurchaseOrder.ChangePurchaseOrderStatusToComplete(command.PurchaseOrderId);
 		await _serviceBus.Publish(purchaseOrderStatusCompleted, cancellationToken);
 	}
 }

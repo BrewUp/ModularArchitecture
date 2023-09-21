@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using BrewUp.Modules.Purchases.Domain;
 using BrewUp.Modules.Purchases.Messages.Events;
 using BrewUp.Modules.Purchases.ReadModel;
@@ -8,6 +9,7 @@ using NetArchTest.Rules;
 
 namespace BrewUp.Modules.Purchases.NetArchTests;
 
+[ExcludeFromCodeCoverage]
 public class VerifyArchitectureTest
 {
 	[Fact]
@@ -121,7 +123,7 @@ public class VerifyArchitectureTest
 	}
 
 	[Fact]
-	// Classes in the module Purchases should not directly reference Warehouses
+	// Classes in the module Purchases should have namespace starting with BrewUp.Modules.Purchases
 	public void PurchasesProjects_Should_Having_Namespace_StartingWith_BrewUp_Modules_Purchases()
 	{
 		var purchaseModulePath = Path.Combine(VisualStudioProvider.TryGetSolutionDirectoryInfo().FullName, "BrewUp.Purchases");

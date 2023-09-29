@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
-using Brewup.Purchases.ReadModel.Entities;
+using BrewUp.ReadModel.Entities;
 
-namespace Brewup.Purchases.ReadModel
+namespace BrewUp.ReadModel
 {
 	public interface IQueries<T> where T : EntityBase
 	{

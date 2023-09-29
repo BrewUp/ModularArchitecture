@@ -1,4 +1,4 @@
-﻿namespace Brewup.Purchases.ReadModel.Entities
+﻿namespace BrewUp.ReadModel.Entities
 {
   public class LastEventPosition : EntityBase
   {

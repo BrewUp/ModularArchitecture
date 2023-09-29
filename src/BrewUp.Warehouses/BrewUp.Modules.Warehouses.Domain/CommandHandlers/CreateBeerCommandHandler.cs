@@ -1,22 +1,22 @@
-﻿using BrewUp.Shared.Abstracts;
-using BrewUp.Shared.Commands;
+﻿using BrewUp.Shared.Commands;
 using BrewUp.Shared.Events;
-using MediatR;
+using Microsoft.Extensions.Logging;
+using Muflone;
+using Muflone.Persistence;
 
 namespace BrewUp.Modules.Warehouses.Domain.CommandHandlers;
 
-public sealed class CreateBeerCommandHandler : CommandHandlerBase<CreateBeer>
+public sealed class CreateBeerCommandHandler : CommandHandlerBaseAsync<CreateBeer>
 {
-	private readonly IPublisher _serviceBus;
-
-	public CreateBeerCommandHandler(IPublisher serviceBus)
+	private readonly IEventBus _eventBus;
+	public CreateBeerCommandHandler(IEventBus eventBus, IRepository repository, ILoggerFactory loggerFactory) : base(repository, loggerFactory)
 	{
-		_serviceBus = serviceBus;
+		_eventBus = eventBus;
 	}
 
-	public override async Task Handle(CreateBeer command, CancellationToken cancellationToken)
+	public override async Task ProcessCommand(CreateBeer command, CancellationToken cancellationToken = default)
 	{
 		var beerCreated = new BeerCreated(command.BeerId, command.BeerName);
-		await _serviceBus.Publish(beerCreated, cancellationToken);
+		await _eventBus.PublishAsync(beerCreated, cancellationToken);
 	}
 }

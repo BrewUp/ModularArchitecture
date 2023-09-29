@@ -2,7 +2,7 @@
 using Muflone.Messages.Commands;
 using Muflone.Persistence;
 
-namespace BrewUp.Modules.Purchases.Domain.CommandHandlers;
+namespace BrewUp.Modules.Warehouses.Domain.CommandHandlers;
 
 public abstract class CommandHandlerBaseAsync<TCommand> : CommandHandlerAsync<TCommand> where TCommand : class, ICommand
 {

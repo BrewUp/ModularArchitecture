@@ -1,10 +1,10 @@
-﻿using BrewUp.Shared.Abstracts;
-using BrewUp.Shared.DomainIds;
+﻿using BrewUp.Shared.DomainIds;
 using BrewUp.Shared.Dtos;
+using Muflone.Core;
 
 namespace BrewUp.Modules.Purchases.Domain.Entities;
 
-public class PurchaseLine : EntityBase
+public class PurchaseLine : Entity
 {
     private BeerId _beerId;
     private BeerName _beerName;

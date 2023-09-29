@@ -1,4 +1,8 @@
-﻿namespace BrewUp.ReadModel.Services;
+﻿using BrewUp.Modules.Purchases.SharedKernel.DomainIds;
+using BrewUp.Shared.DomainIds;
+using BrewUp.Shared.Dtos;
+
+namespace BrewUp.Modules.Purchases.ReadModel.Services;
 
 public interface IPurchaseOrderService
 {

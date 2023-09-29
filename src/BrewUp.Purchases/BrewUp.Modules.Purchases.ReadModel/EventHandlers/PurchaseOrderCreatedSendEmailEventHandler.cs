@@ -1,6 +1,10 @@
-﻿namespace BrewUp.ReadModel.EventHandlers;
+﻿using BrewUp.Modules.Purchases.Messages.Events;
+using Microsoft.Extensions.Logging;
+using Muflone.Messages.Events;
 
-public sealed class PurchaseOrderCreatedSendEmailEventHandler : DomainEventHandlerBase<PurchaseOrderCreated>
+namespace BrewUp.Modules.Purchases.ReadModel.EventHandlers;
+
+public sealed class PurchaseOrderCreatedSendEmailEventHandler : DomainEventHandlerAsync<PurchaseOrderCreated>
 {
 	public PurchaseOrderCreatedSendEmailEventHandler(ILoggerFactory loggerFactory) :
 		base(loggerFactory)

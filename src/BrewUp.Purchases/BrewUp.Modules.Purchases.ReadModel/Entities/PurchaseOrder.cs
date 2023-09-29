@@ -1,4 +1,10 @@
-﻿namespace BrewUp.ReadModel.Entities;
+﻿using BrewUp.Modules.Purchases.SharedKernel.DomainIds;
+using BrewUp.Modules.Purchases.SharedKernel.Dtos;
+using BrewUp.ReadModel.Entities;
+using BrewUp.Shared.DomainIds;
+using BrewUp.Shared.Dtos;
+
+namespace BrewUp.Modules.Purchases.ReadModel.Entities;
 
 public class PurchaseOrder : EntityBase
 {

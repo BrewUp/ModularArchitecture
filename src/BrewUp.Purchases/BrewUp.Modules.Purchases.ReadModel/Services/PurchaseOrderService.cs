@@ -1,6 +1,12 @@
-﻿using BrewUp.ReadModel.Entities;
+﻿using BrewUp.Modules.Purchases.ReadModel.Entities;
+using BrewUp.Modules.Purchases.SharedKernel.DomainIds;
+using BrewUp.Modules.Purchases.SharedKernel.Dtos;
+using BrewUp.ReadModel;
+using BrewUp.Shared.DomainIds;
+using BrewUp.Shared.Dtos;
+using Microsoft.Extensions.Logging;
 
-namespace BrewUp.ReadModel.Services;
+namespace BrewUp.Modules.Purchases.ReadModel.Services;
 
 public class PurchaseOrderService : ServiceBase, IPurchaseOrderService
 {
@@ -13,13 +19,13 @@ public class PurchaseOrderService : ServiceBase, IPurchaseOrderService
 	{
 		var order = PurchaseOrder.Create(purchaseOrderId, date, lines, supplierId);
 
-		await Persister.Insert(order);
+		await Persister.InsertAsync(order, CancellationToken.None);
 	}
 
 	public async Task UpdateStatusToComplete(PurchaseOrderId purchaseOrderId)
 	{
-		var order = await Persister.GetBy<PurchaseOrder>(purchaseOrderId.ToString());
+		var order = await Persister.GetByIdAsync<PurchaseOrder>(purchaseOrderId.ToString(), CancellationToken.None);
 		order.Status = Status.Complete;
-		await Persister.Update(order);
+		await Persister.UpdateAsync(order, CancellationToken.None);
 	}
 }

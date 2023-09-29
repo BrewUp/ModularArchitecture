@@ -1,8 +1,8 @@
 ﻿using BrewUp.Modules.Purchases.Messages.Events;
 using BrewUp.Modules.Purchases.SharedKernel.DomainIds;
-using BrewUp.Shared.Abstracts;
 using BrewUp.Shared.DomainIds;
 using BrewUp.Shared.Dtos;
+using Muflone.Core;
 
 namespace BrewUp.Modules.Purchases.Domain.Entities;
 

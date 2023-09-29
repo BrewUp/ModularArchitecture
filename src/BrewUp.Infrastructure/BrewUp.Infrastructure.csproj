@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Muflone.Eventstore" Version="6.1.1" />
+      <PackageReference Include="Muflone.Saga.Persistence.MongoDb" Version="6.0.0" />
+      <PackageReference Include="Muflone.Transport.RabbitMQ" Version="6.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BrewUp.Purchases\BrewUp.Modules.Purchases.Domain\BrewUp.Modules.Purchases.Domain.csproj" />
+      <ProjectReference Include="..\BrewUp.Purchases\BrewUp.Modules.Purchases.Messages\BrewUp.Modules.Purchases.Messages.csproj" />
+      <ProjectReference Include="..\BrewUp.ReadModel\BrewUp.ReadModel.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,22 +1,23 @@
-﻿using BrewUp.Shared.Abstracts;
-using BrewUp.Shared.Commands;
+﻿using BrewUp.Shared.Commands;
 using BrewUp.Shared.Events;
-using MediatR;
+using Microsoft.Extensions.Logging;
+using Muflone;
+using Muflone.Persistence;
 
 namespace BrewUp.Modules.Warehouses.Domain.CommandHandlers;
 
-public sealed class LoadBeerInStockCommandHandler : CommandHandlerBase<LoadBeerInStock>
+public sealed class LoadBeerInStockCommandHandler : CommandHandlerBaseAsync<LoadBeerInStock>
 {
-	private readonly IPublisher _serviceBus;
+	private readonly IEventBus _eventBus;
 
-	public LoadBeerInStockCommandHandler(IPublisher serviceBus)
+	public LoadBeerInStockCommandHandler(IEventBus eventBus, IRepository repository, ILoggerFactory loggerFactory) : base(repository, loggerFactory)
 	{
-		_serviceBus = serviceBus;
+		_eventBus = eventBus;
 	}
 
-	public override async Task Handle(LoadBeerInStock command, CancellationToken cancellationToken)
+	public override async Task ProcessCommand(LoadBeerInStock command, CancellationToken cancellationToken = default)
 	{
 		var beerLoadedInStock = new BeerLoadedInStock(command.BeerId, command.Stock, command.Price, command.PurchaseOrderId);
-		await _serviceBus.Publish(beerLoadedInStock, cancellationToken);
+		await _eventBus.PublishAsync(beerLoadedInStock, cancellationToken);
 	}
 }

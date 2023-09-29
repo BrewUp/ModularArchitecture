@@ -1,23 +1,25 @@
 ﻿using BrewUp.Modules.Purchases.Domain.Entities;
 using BrewUp.Modules.Purchases.Messages.Commands;
-using BrewUp.Shared.Abstracts;
-using MediatR;
+using Microsoft.Extensions.Logging;
+using Muflone;
+using Muflone.Persistence;
 
 namespace BrewUp.Modules.Purchases.Domain.CommandHandlers;
 
-public sealed class ChangePurchaseOrderStatusToCompleteCommandHandler : CommandHandlerBase<ChangePurchaseOrderStatusToComplete>
+public sealed class ChangePurchaseOrderStatusToCompleteCommandHandler : CommandHandlerBaseAsync<ChangePurchaseOrderStatusToComplete>
 {
-	private readonly IPublisher _serviceBus;
+	private readonly IEventBus _eventBus;
 
-	public ChangePurchaseOrderStatusToCompleteCommandHandler(IPublisher serviceBus)
+	public ChangePurchaseOrderStatusToCompleteCommandHandler(IRepository repository, ILoggerFactory loggerFactory,
+		IEventBus eventBus) : base(repository, loggerFactory)
 	{
-		_serviceBus = serviceBus;
+		_eventBus = eventBus;
 	}
 
-	public override async Task Handle(ChangePurchaseOrderStatusToComplete command, CancellationToken cancellationToken)
+	public override async Task ProcessCommand(ChangePurchaseOrderStatusToComplete command, CancellationToken cancellationToken = default)
 	{
-		// Aggregate Factory
-		var purchaseOrderStatusCompleted = PurchaseOrder.ChangePurchaseOrderStatusToComplete(command.PurchaseOrderId);
-		await _serviceBus.Publish(purchaseOrderStatusCompleted, cancellationToken);
+			// Aggregate Factory
+			var purchaseOrderStatusCompleted = PurchaseOrder.ChangePurchaseOrderStatusToComplete(command.PurchaseOrderId);
+			await _eventBus.PublishAsync(purchaseOrderStatusCompleted, cancellationToken);
 	}
 }
